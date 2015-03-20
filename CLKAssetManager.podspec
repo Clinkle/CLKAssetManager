@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "CLKAssetManager"
-  s.version          = "0.1.1"
+  s.version          = "0.1.2"
   s.summary          = "The best way to reduce your iOS app binary by safely downloading binary assets at most once"
   s.homepage         = "https://github.com/Clinkle/CLKAssetManager"
   s.license          = 'Apache'
