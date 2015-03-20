@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "CLKAssetManager"
-  s.version          = "0.1.0"
+  s.version          = "0.1.1"
   s.summary          = "The best way to reduce your iOS app binary by safely downloading binary assets at most once"
   s.homepage         = "https://github.com/Clinkle/CLKAssetManager"
   s.license          = 'Apache'
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'CLKModel', '~> 0.1.1'
   s.dependency 'CLKSingletons', '~> 0.1.1'
-  s.dependency 'AFNetworking', '~> 2.2.1'
+  s.dependency 'AFNetworking', '~> 2.5.1'
   s.frameworks = 'CommonCrypto'
 
   s.platform     = :ios, '7.0'
