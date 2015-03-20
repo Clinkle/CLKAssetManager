@@ -1,0 +1,5 @@
+{
+	"path_to_remote_assets" : "/path/to/assets",
+	"requires_confirmation" : true,
+	"default_s3_bucket" : "mycompany-ios-remote-assets"
+}
