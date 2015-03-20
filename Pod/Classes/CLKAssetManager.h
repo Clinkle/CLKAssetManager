@@ -34,6 +34,8 @@ DECLARE_SINGLETON_FOR_CLASS(CLKAssetManager)
 
 + (void)suppressLogs:(BOOL)shouldSupress;
 
++ (void)performRequestsSynchronously:(BOOL)synchronously;
+
 @property (nonatomic, readonly) AFHTTPRequestOperationManager *requestOperationManager;
 @property (nonatomic, strong) NSDictionary *manifest; // generated and uploaded through `rake remote_assets:upload`
 

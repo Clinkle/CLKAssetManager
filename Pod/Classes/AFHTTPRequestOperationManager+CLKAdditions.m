@@ -6,6 +6,7 @@
                          URLString:(NSString *)URLString
                         parameters:(NSDictionary *)parameters
                          completed:(void (^)(AFHTTPRequestOperation *operation, id responseObject, NSError *error))completed
+                       synchronous:(BOOL)synchronous
 {
     NSMutableURLRequest *request = [self.requestSerializer requestWithMethod:[method capitalizedString]
                                                                    URLString:[[NSURL URLWithString:URLString relativeToURL:self.baseURL] absoluteString]
@@ -27,24 +28,27 @@
                                                                       failure:failureBlock];
 
     [self.operationQueue addOperation:operation];
-#if SPECS
-    [operation waitUntilFinished];
-    if (operation.responseObject) {
-        successBlock(operation, operation.responseObject);
-    } else {
-        failureBlock(operation, operation.error);
+
+    if (synchronous) {
+        [operation waitUntilFinished];
+        if (operation.responseObject) {
+            successBlock(operation, operation.responseObject);
+        } else {
+            failureBlock(operation, operation.error);
+        }
     }
-#endif
     return operation;
 }
 
 - (AFHTTPRequestOperation *)URLString:(NSString *)URLString
                             completed:(void (^)(AFHTTPRequestOperation *operation, id responseObject, NSError *error))completed
+                          synchronous:(BOOL)synchronous
 {
     return [self method:@"GET"
               URLString:URLString
              parameters:nil
-              completed:completed];
+              completed:completed
+            synchronous:synchronous];
 }
 
 @end

@@ -18,6 +18,7 @@ typedef NS_ENUM(NSUInteger , CLKAssetDownloadState) {
 
 - (id)initWithURLString:(NSString *)URLString;
 
-- (void)downloadWithCompletion:(void (^)(AFHTTPRequestOperation *operation, id responseObject, NSError *error))completed;
+- (void)downloadWithCompletion:(void (^)(AFHTTPRequestOperation *, id, NSError *))completed
+                 synchronously:(BOOL)synchronous;
 
 @end

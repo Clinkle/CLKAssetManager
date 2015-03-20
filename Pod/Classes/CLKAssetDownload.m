@@ -29,6 +29,7 @@
 }
 
 - (void)downloadWithCompletion:(void (^)(AFHTTPRequestOperation *operation, id responseObject, NSError *error))completed
+                 synchronously:(BOOL)synchronous
 {
     if (!self.URLString) {
         if (completed) {
@@ -54,7 +55,8 @@
                                  if (completed) {
                                      completed(operation, data, error);
                                  }
-                             }];
+                             }
+                           synchronous:synchronous];
 }
 
 @end

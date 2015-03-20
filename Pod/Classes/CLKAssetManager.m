@@ -13,8 +13,9 @@
 @property (nonatomic, strong) NSMutableDictionary *assetDownloads; // {:key => <CLKAssetDownload>}
 
 @property (nonatomic, strong) NSString *urlPrefix;
-
 @property (nonatomic, assign) BOOL logsAreSupressed;
+@property (nonatomic, assign) BOOL requestsAreSynchronous;
+
 @property (nonatomic, assign) BOOL isFetchingManifest;
 
 @end
@@ -41,6 +42,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CLKAssetManager)
 + (void)suppressLogs:(BOOL)shouldSupress
 {
     [self singleton].logsAreSupressed = shouldSupress;
+}
+
++ (void)performRequestsSynchronously:(BOOL)synchronously
+{
+    [self singleton].requestsAreSynchronous = synchronously;
 }
 
 - (BOOL)setAssetData:(NSData *)data
@@ -207,7 +213,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CLKAssetManager)
                      }
                      self.isFetchingManifest = NO;
                  });
-             }];
+             }
+           synchronous:self.requestsAreSynchronous];
 }
 
 - (void)updateManifest:(NSDictionary *)manifest
@@ -319,7 +326,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(CLKAssetManager)
                         }
                     }
                 });
-            }];
+            }
+                                    synchronously:self.requestsAreSynchronous];
         });
     });
 }
