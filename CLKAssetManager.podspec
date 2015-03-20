@@ -10,7 +10,6 @@ Pod::Spec.new do |s|
   s.dependency 'CLKModel', '~> 0.1.1'
   s.dependency 'CLKSingletons', '~> 0.1.1'
   s.dependency 'AFNetworking', '~> 2.5.1'
-  s.frameworks = 'CommonCrypto'
 
   s.platform     = :ios, '7.0'
   s.requires_arc = true
